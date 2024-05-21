@@ -1,14 +1,16 @@
-#ifndef JUGADORIADIFICIL_HH
-#define JUGADORIADIFICIL_HH
+#ifndef JUGADORIADEFICIL_HH
+#define JUGADORIADEFICIL_HH
 
 #include "IJugador.hh"
 
 class JugadorIaDificil : public IJugador {
 public:
-    void Puntaje() override;
-    void Nombre() override;
-    void EvaluarMovimiento();
+    JugadorIaDificil(const std::string& nombre);
+
+    int GetPuntaje() const override;
+    std::string GetNombre() const override;
     void CrearFicha() override;
+    void EvaluarMovimiento();
 };
 
-#endif // JUGADORIADIFICIL_HH
+#endif // JUGADORIADEFICIL_HH

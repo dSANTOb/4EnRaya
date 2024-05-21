@@ -1,22 +1,19 @@
 #include "JugadorIaDificil.hh"
-#include <iostream>
 
-void JugadorIaDificil::Puntaje() {
-    // Implementación de Puntaje
-    std::cout << "Puntaje del Jugador IA Difícil" << std::endl;
+JugadorIaDificil::JugadorIaDificil(const std::string& nombre) : IJugador(nombre) {}
+
+int JugadorIaDificil::GetPuntaje() const {
+    return Puntaje;
 }
 
-void JugadorIaDificil::Nombre() {
-    // Implementación de Nombre
-    std::cout << "Nombre del Jugador IA Difícil" << std::endl;
-}
-
-void JugadorIaDificil::EvaluarMovimiento() {
-    // Implementación de EvaluarMovimiento
-    std::cout << "Evaluando movimiento en IA Difícil" << std::endl;
+std::string JugadorIaDificil::GetNombre() const {
+    return Nombre;
 }
 
 void JugadorIaDificil::CrearFicha() {
-    // Implementación de CrearFicha
-    std::cout << "Creando ficha del Jugador IA Difícil" << std::endl;
+    // Implementar lógica para crear una ficha para la IA difícil
+}
+
+void JugadorIaDificil::EvaluarMovimiento() {
+    // Implementar lógica para evaluar el movimiento de la IA difícil
 }

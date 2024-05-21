@@ -1,22 +1,19 @@
 #include "JugadorIaFacil.hh"
-#include <iostream>
 
-void JugadorIaFacil::Puntaje() {
-    // Implementación de Puntaje
-    std::cout << "Puntaje del Jugador IA Fácil" << std::endl;
+JugadorIaFacil::JugadorIaFacil(const std::string& nombre) : IJugador(nombre) {}
+
+int JugadorIaFacil::GetPuntaje() const {
+    return Puntaje;
 }
 
-void JugadorIaFacil::Nombre() {
-    // Implementación de Nombre
-    std::cout << "Nombre del Jugador IA Fácil" << std::endl;
-}
-
-void JugadorIaFacil::EvaluarMovimiento() {
-    // Implementación de EvaluarMovimiento
-    std::cout << "Evaluando movimiento en IA Fácil" << std::endl;
+std::string JugadorIaFacil::GetNombre() const {
+    return Nombre;
 }
 
 void JugadorIaFacil::CrearFicha() {
-    // Implementación de CrearFicha
-    std::cout << "Creando ficha del Jugador IA Fácil" << std::endl;
+    // Implementar lógica para crear una ficha para la IA fácil
+}
+
+void JugadorIaFacil::EvaluarMovimiento() {
+    // Implementar lógica para evaluar el movimiento de la IA fácil
 }

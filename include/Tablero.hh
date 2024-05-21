@@ -2,11 +2,16 @@
 #define TABLERO_HH
 
 class Tablero {
+private:
+    int TamañoTablero;
+
 public:
-    void TamanoTablero();
+    Tablero(int tamaño);
+    
+    int GetTamañoTablero() const;
     void PosicionesOcupadas();
     void AgregarFicha();
-    bool Victoria();
+    bool Victoria() const;
 };
 
 #endif // TABLERO_HH
