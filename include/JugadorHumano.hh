@@ -5,9 +5,8 @@
 
 class JugadorHumano : public IJugador {
 public:
-    void Puntaje() override;
-    void Nombre() override;
-    void CrearFicha() override;
+    JugadorHumano(const std::string &nombre);
+    int realizarMovimiento() override; 
 };
 
 #endif // JUGADORHUMANO_HH

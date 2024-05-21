@@ -1,17 +1,12 @@
 #include "JugadorHumano.hh"
+
 #include <iostream>
 
-void JugadorHumano::Puntaje() {
-    // Implementación de Puntaje
-    std::cout << "Puntaje del Jugador Humano" << std::endl;
-}
+JugadorHumano::JugadorHumano(const std::string &nombre) : IJugador(nombre) {}
 
-void JugadorHumano::Nombre() {
-    // Implementación de Nombre
-    std::cout << "Nombre del Jugador Humano" << std::endl;
-}
-
-void JugadorHumano::CrearFicha() {
-    // Implementación de CrearFicha
-    std::cout << "Creando ficha del Jugador Humano" << std::endl;
+int JugadorHumano::realizarMovimiento() {
+  int columna;
+  std::cout << "Ingrese la columna donde desea colocar su ficha: ";
+  std::cin >> columna;
+  return columna;
 }
