@@ -1,19 +1,15 @@
 #include "JugadorIaDificil.hh"
+#include <cstdlib>
 
-JugadorIaDificil::JugadorIaDificil(const std::string& nombre) : IJugador(nombre) {}
+JugadorIaDificil::JugadorIaDificil(const std::string &nombre) : IJugador(nombre) {}
 
-int JugadorIaDificil::GetPuntaje() const {
-    return Puntaje;
+int JugadorIaDificil::realizarMovimiento() {
+    // Aquí se debe agregar el metodo de minimax para decifrar la columna optima
+    return rand() % 7; //por el momento random
 }
 
-std::string JugadorIaDificil::GetNombre() const {
-    return Nombre;
+int JugadorIaDificil::minimax(Tablero &tablero, int profundidad, bool esMaximizador) {
+    // Implementar el algoritmo Minimax aquí
+    return 0; // Placeholder
 }
 
-void JugadorIaDificil::CrearFicha() {
-    // Implementar lógica para crear una ficha para la IA difícil
-}
-
-void JugadorIaDificil::EvaluarMovimiento() {
-    // Implementar lógica para evaluar el movimiento de la IA difícil
-}

@@ -1,16 +1,17 @@
-#ifndef JUGADORIADEFICIL_HH
-#define JUGADORIADEFICIL_HH
+#ifndef JUGADORIADIFICIL_HH
+#define JUGADORIADIFICIL_HH
 
 #include "IJugador.hh"
+#include "Tablero.hh"
 
 class JugadorIaDificil : public IJugador {
 public:
-    JugadorIaDificil(const std::string& nombre);
+    JugadorIaDificil(const std::string &nombre);
+    int realizarMovimiento() override;
 
-    int GetPuntaje() const override;
-    std::string GetNombre() const override;
-    void CrearFicha() override;
-    void EvaluarMovimiento();
+private:
+    //Sin implementar
+    int minimax(Tablero &tablero, int profundidad, bool esMaximizador);
 };
 
-#endif // JUGADORIADEFICIL_HH
+#endif // JUGADORIADIFICIL_HH

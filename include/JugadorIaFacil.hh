@@ -5,10 +5,9 @@
 
 class JugadorIaFacil : public IJugador {
 public:
-    void Puntaje() override;
-    void Nombre() override;
-    void EvaluarMovimiento();
-    void CrearFicha() override;
+    JugadorIaFacil(const std::string &nombre);
+    int realizarMovimiento() override;
 };
 
 #endif // JUGADORIAFACIL_HH
+
