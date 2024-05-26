@@ -1,4 +1,4 @@
-#include "JugadorIaFacil.hh"
+#include <JugadorIaFacil.hh>
 #include <cstdlib>
 
 JugadorIaFacil::JugadorIaFacil(const std::string &nombre) : IJugador(nombre) {}

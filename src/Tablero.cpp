@@ -1,4 +1,4 @@
-#include "Tablero.hh"
+#include <Tablero.hh>
 #include <iostream>
 
 Tablero::Tablero() : grid(filas, std::vector<int>(columnas, 0)) {}
