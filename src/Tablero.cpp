@@ -26,7 +26,7 @@ void Tablero::imprimirTablero() const {
 }
 
 int Tablero::verificarGanador() const {
-    // Implementar lógica para verificar si hay un ganador
+    //Implementar lógica para verificar si hay un ganador
     return 0;
 }
 
