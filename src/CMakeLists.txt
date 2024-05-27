@@ -1,5 +1,8 @@
-# TODO: Cambiar el nombre del destino. Este va a ser el nombre del ejecutable
-set(TARGET_NAME PlantillaWxWidgets)
+set(HEADER_LIST
+"${4EnRaya_SOURCE_DIR}/include/*.hh"
+)
+
+set(TARGET_NAME ConectaCuatro)
 
 project(${TARGET_NAME})
 
