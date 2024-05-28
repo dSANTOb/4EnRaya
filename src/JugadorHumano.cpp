@@ -1,4 +1,4 @@
-#include "JugadorHumano.hh"
+#include <JugadorHumano.hh>
 
 #include <iostream>
 

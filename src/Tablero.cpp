@@ -1,4 +1,4 @@
-#include "Tablero.hh"
+#include <Tablero.hh>
 #include <iostream>
 
 Tablero::Tablero() : grid(filas, std::vector<int>(columnas, 0)) {}
@@ -26,7 +26,7 @@ void Tablero::imprimirTablero() const {
 }
 
 int Tablero::verificarGanador() const {
-    // Implementar lógica para verificar si hay un ganador
+    //Implementar lógica para verificar si hay un ganador
     return 0;
 }
 
