@@ -1,35 +1,32 @@
-#include "Tablero.hh"
-#include <iostream>
+#ifndef TABLERO_HH
+#define TABLERO_HH
 
-Tablero::Tablero() : grid(filas, std::vector<int>(columnas, 0)) {}
+#include <vector>
 
-bool Tablero::colocarFicha(int columna, int jugador) {
-    //Coloca el numero representativo del jugador en el grid
-    if (columna < 0 || columna >= columnas) return false;
-    for (int fila = filas - 1; fila >= 0; --fila) {
-        if (grid[fila][columna] == 0) {
-            grid[fila][columna] = jugador;
-            return true;
-        }
-    }
-    return false;
-}
+class Tablero {
+private:
+    //Vector int que almacena el estado del tablero (Una matriz de enteros) en grid
+    std::vector<std::vector<int>> grid;
+    const int filas = 6;
+    const int columnas = 7;
 
-void Tablero::imprimirTablero() const {
-    //Imprime el tablero segun el estado del grid
-    for (const auto &fila : grid) {
-        for (const auto &celda : fila) {
-            std::cout << (celda == 0 ? "." : (celda == 1 ? "X" : "O")) << " ";
-        }
-        std::cout << std::endl;
-    }
-}
+public:
+    // Constructor de la clase Tablero
+    Tablero();
 
-int Tablero::verificarGanador() const {
-    // Implementar lógica para verificar si hay un ganador
-    return 0;
-}
+    // Método para colocar una ficha en una columna específica para un jugador dado
+    // Retorna true si la ficha se pudo colocar, false si la columna está llena
+    bool colocarFicha(int columna, int jugador);
 
-const std::vector<std::vector<int>>& Tablero::getGrid() const {
-    return grid;
-}
+    // Método para imprimir el tablero actual
+    void imprimirTablero() const;
+
+    // Método para verificar si hay un ganador en el tablero
+    // Retorna el número del jugador que ganó (1 o 2), o 0 si no hay ganador
+    int verificarGanador() const;
+
+    // Método para obtener el estado actual del tablero
+    const std::vector<std::vector<int>>& getGrid() const;
+};
+
+#endif // TABLERO_HH
