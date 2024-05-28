@@ -1,4 +1,4 @@
-#include "IJugador.hh"
+#include <IJugador.hh>
 
 IJugador::IJugador(const std::string &nombre) : nombre(nombre), puntaje(0) {}
 

@@ -1,4 +1,4 @@
-#include "Tablero.hh"
+#include <Tablero.hh>
 #include <gtest/gtest.h>
 
 TEST(TableroTest, InicializacionTablero) {

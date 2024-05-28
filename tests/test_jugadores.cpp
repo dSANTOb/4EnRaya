@@ -1,7 +1,7 @@
-#include "JugadorHumano.hh"
-#include "JugadorIaFacil.hh"
-#include "JugadorIaDificil.hh"
-#include "Tablero.hh"
+#include <JugadorHumano.hh>
+#include <JugadorIaFacil.hh>
+#include <JugadorIaDificil.hh>
+#include <Tablero.hh>
 #include <gtest/gtest.h>
 #include <iostream>
 #include <sstream>

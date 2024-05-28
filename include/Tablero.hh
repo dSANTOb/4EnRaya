@@ -5,6 +5,7 @@
 
 class Tablero {
 private:
+    //TODO: El tablero no debe ser constante, sino que cambia con la ventana
     //Vector int que almacena el estado del tablero (Una matriz de enteros) en grid
     std::vector<std::vector<int>> grid;
     const int filas = 6;

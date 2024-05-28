@@ -1,12 +1,5 @@
-#include <wx/wx.h>
+#include <App.hh>
+#include <Frame.hh>
 
-class MyApp : public wxApp {
- public:
-  virtual bool OnInit() {
-    wxFrame* frame = new wxFrame(NULL, wxID_ANY, "Hello, World!");
-    frame->Show(true);
-    return true;
-  }
-};
+wxIMPLEMENT_APP(App);
 
-wxIMPLEMENT_APP(MyApp);
