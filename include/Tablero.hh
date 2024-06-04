@@ -16,8 +16,7 @@ public:
     bool colocarFicha(int columna, int jugador);
     void imprimirTablero() const;
     int verificarGanador() const;
-    
-    // Método para obtener el estado actual del tablero
+
     const std::vector<std::vector<int>>& getGrid() const;
     void redimensionar(int nuevasFilas, int nuevasColumnas);
 };

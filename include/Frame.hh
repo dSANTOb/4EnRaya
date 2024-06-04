@@ -2,6 +2,7 @@
 #define FRAME_HH
 
 #include <wx/wx.h>
+#include <wx/dcbuffer.h>
 #include <Tablero.hh>
 
 class Frame : public wxFrame {
