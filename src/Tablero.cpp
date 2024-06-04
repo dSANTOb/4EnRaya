@@ -26,7 +26,51 @@ void Tablero::imprimirTablero() const {
 }
 
 int Tablero::verificarGanador() const {
-    //Implementar lógica para verificar si hay un ganador
+    // Verificar horizontalmente
+    for (int fila = 0; fila < filas; ++fila) {
+        for (int columna = 0; columna <= columnas - 4; ++columna) {
+            int jugador = grid[fila][columna];
+            if (jugador != 0 && jugador == grid[fila][columna + 1] && 
+                jugador == grid[fila][columna + 2] && jugador == grid[fila][columna + 3]) {
+                return jugador;
+            }
+        }
+    }
+
+    // Verificar verticalmente
+    for (int fila = 0; fila <= filas - 4; ++fila) {
+        for (int columna = 0; columna < columnas; ++columna) {
+            int jugador = grid[fila][columna];
+            if (jugador != 0 && jugador == grid[fila + 1][columna] && 
+                jugador == grid[fila + 2][columna] && jugador == grid[fila + 3][columna]) {
+                return jugador;
+            }
+        }
+    }
+
+    // Verificar diagonal ascendente
+    for (int fila = 3; fila < filas; ++fila) {
+        for (int columna = 0; columna <= columnas - 4; ++columna) {
+            int jugador = grid[fila][columna];
+            if (jugador != 0 && jugador == grid[fila - 1][columna + 1] && 
+                jugador == grid[fila - 2][columna + 2] && jugador == grid[fila - 3][columna + 3]) {
+                return jugador;
+            }
+        }
+    }
+
+    // Verificar diagonal descendente
+    for (int fila = 0; fila <= filas - 4; ++fila) {
+        for (int columna = 0; columna <= columnas - 4; ++columna) {
+            int jugador = grid[fila][columna];
+            if (jugador != 0 && jugador == grid[fila + 1][columna + 1] && 
+                jugador == grid[fila + 2][columna + 2] && jugador == grid[fila + 3][columna + 3]) {
+                return jugador;
+            }
+        }
+    }
+
+    // Si no hay ganador, retorna 0
     return 0;
 }
 
