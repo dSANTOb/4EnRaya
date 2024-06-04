@@ -1,7 +1,7 @@
 #include <Tablero.hh>
 #include <iostream>
 
-Tablero::Tablero() : grid(filas, std::vector<int>(columnas, 0)) {}
+Tablero::Tablero(int filas, int columnas) : filas(filas), columnas(columnas), grid(filas, std::vector<int>(columnas, 0)) {}
 
 bool Tablero::colocarFicha(int columna, int jugador) {
     //Coloca el numero representativo del jugador en el grid
@@ -76,4 +76,18 @@ int Tablero::verificarGanador() const {
 
 const std::vector<std::vector<int>>& Tablero::getGrid() const {
     return grid;
+}
+
+void Tablero::redimensionar(int nuevasFilas, int nuevasColumnas) {
+    std::vector<std::vector<int>> nuevoGrid(nuevasFilas, std::vector<int>(nuevasColumnas, 0));
+
+    for (int i = 0; i < std::min(filas, nuevasFilas); ++i) {
+        for (int j = 0; j < std::min(columnas, nuevasColumnas); ++j) {
+            nuevoGrid[i][j] = grid[i][j];
+        }
+    }
+
+    filas = nuevasFilas;
+    columnas = nuevasColumnas;
+    grid = nuevoGrid;
 }
