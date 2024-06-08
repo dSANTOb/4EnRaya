@@ -10,8 +10,10 @@ public:
     int realizarMovimiento() override;
 
 private:
-    //Sin implementar
-    int minimax(Tablero &tablero, int profundidad, bool esMaximizador);
+  int minimax(Tablero &tablero, int profundidad, bool esMaximizador);
+    int evaluarTablero(const Tablero &tablero) const;
+    std::vector<int> obtenerMovimientosValidos(const Tablero &tablero) const;
+    bool estaLleno(const Tablero &tablero) const;
 };
 
 #endif // JUGADORIADIFICIL_HH
