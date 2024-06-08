@@ -12,7 +12,7 @@ public:
 private:
   int minimax(Tablero &tablero, int profundidad, bool esMaximizador);
     int evaluarTablero(const Tablero &tablero) const;
-    std::vector<int> obtenerMovimientosValidos(const Tablero &tablero) const;
+    std::vector<int> obtenerMovimientos(const Tablero &tablero) const;
     bool estaLleno(const Tablero &tablero) const;
 };
 
