@@ -13,6 +13,9 @@ bool App::OnInit() {
 
         Frame* frame = new Frame("Conecta 4", rows, cols, opponent);
         frame->Show(true);
+
+        return true;
     }
-    return false; // End the app if the dialog is cancelled
+    
+    return false;
 }
