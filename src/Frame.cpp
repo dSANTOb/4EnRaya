@@ -6,9 +6,9 @@ wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_SIZE(Frame::OnResize)
 wxEND_EVENT_TABLE()
 
-Frame::Frame(const wxString& title)
+Frame::Frame(const wxString& title, int rows, int cols, const wxString& opponent)
     : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(700, 600)),
-      cellWidth(100), cellHeight(100), tablero(6, 7) {
+      cellWidth(100), cellHeight(100), tablero(rows, cols), opponent(opponent) {
     SetBackgroundStyle(wxBG_STYLE_PAINT);
 }
 
