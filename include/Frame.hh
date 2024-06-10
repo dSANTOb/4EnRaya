@@ -7,12 +7,13 @@
 
 class Frame : public wxFrame {
 public:
-    Frame(const wxString& title);
+    Frame(const wxString& title, int rows, int cols, const wxString& opponent);
 
 private:
     Tablero tablero;
     int cellWidth;
     int cellHeight;
+    wxString opponent;
 
     void OnPaint(wxPaintEvent& event);
     void OnMouseClick(wxMouseEvent& event);
