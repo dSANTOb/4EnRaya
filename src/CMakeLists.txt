@@ -27,6 +27,7 @@ set(SRCS
     JugadorIaDificil.cpp
     JugadorIaFacil.cpp
     main.cpp
+    Menu.cpp
     Tablero.cpp
 )
 
