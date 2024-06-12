@@ -2,6 +2,7 @@
 #define IJUGADOR_HH
 
 #include <string>
+#include <Tablero.hh>
 
 class IJugador {
 protected:
@@ -10,8 +11,8 @@ protected:
 
 public:
     IJugador(const std::string &nombre); //Constructor
-    virtual ~IJugador(); //DEstructor
-    virtual int realizarMovimiento() = 0;
+    virtual ~IJugador(); //Destructor
+    virtual int realizarMovimiento(Tablero& tablero) = 0;
     std::string getNombre() const;
     int getPuntaje() const;
     void incrementarPuntaje();

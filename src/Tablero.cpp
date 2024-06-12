@@ -1,12 +1,12 @@
 #include <Tablero.hh>
 #include <iostream>
 
-Tablero::Tablero(int filas, int columnas) : filas(filas), columnas(columnas), grid(filas, std::vector<int>(columnas, 0)) {}
+#include "Tablero.hh"
+
+Tablero::Tablero(int filas, int columnas) : grid(filas, std::vector<int>(columnas, 0)) {}
 
 bool Tablero::colocarFicha(int columna, int jugador) {
-    //Coloca el numero representativo del jugador en el grid
-    if (columna < 0 || columna >= columnas) return false;
-    for (int fila = filas - 1; fila >= 0; --fila) {
+    for (int fila = grid.size() - 1; fila >= 0; --fila) {
         if (grid[fila][columna] == 0) {
             grid[fila][columna] = jugador;
             return true;
@@ -25,52 +25,15 @@ void Tablero::imprimirTablero() const {
     }
 }
 
-int Tablero::verificarGanador() const {
-    // Verificar horizontalmente
-    for (int fila = 0; fila < filas; ++fila) {
-        for (int columna = 0; columna <= columnas - 4; ++columna) {
-            int jugador = grid[fila][columna];
-            if (jugador != 0 && jugador == grid[fila][columna + 1] && 
-                jugador == grid[fila][columna + 2] && jugador == grid[fila][columna + 3]) {
-                return jugador;
-            }
-        }
-    }
+int Tablero::verificarGanador(int fila, int columna) const {
+    int jugador = grid[fila][columna];
+    if (jugador == 0) return 0;
 
-    // Verificar verticalmente
-    for (int fila = 0; fila <= filas - 4; ++fila) {
-        for (int columna = 0; columna < columnas; ++columna) {
-            int jugador = grid[fila][columna];
-            if (jugador != 0 && jugador == grid[fila + 1][columna] && 
-                jugador == grid[fila + 2][columna] && jugador == grid[fila + 3][columna]) {
-                return jugador;
-            }
-        }
+    if (verificarLinea(fila, columna, 1, 0, jugador) || // Vertical
+        verificarLinea(fila, columna, 0, 1, jugador) || // Horizontal
+        verificarLinea(fila, columna, 1, 1, jugador) || // Diagonal /
+        verificarLinea(fila, columna, 1, -1, jugador)) { // Diagonal \ return jugador;
     }
-
-    // Verificar diagonal ascendente
-    for (int fila = 3; fila < filas; ++fila) {
-        for (int columna = 0; columna <= columnas - 4; ++columna) {
-            int jugador = grid[fila][columna];
-            if (jugador != 0 && jugador == grid[fila - 1][columna + 1] && 
-                jugador == grid[fila - 2][columna + 2] && jugador == grid[fila - 3][columna + 3]) {
-                return jugador;
-            }
-        }
-    }
-
-    // Verificar diagonal descendente
-    for (int fila = 0; fila <= filas - 4; ++fila) {
-        for (int columna = 0; columna <= columnas - 4; ++columna) {
-            int jugador = grid[fila][columna];
-            if (jugador != 0 && jugador == grid[fila + 1][columna + 1] && 
-                jugador == grid[fila + 2][columna + 2] && jugador == grid[fila + 3][columna + 3]) {
-                return jugador;
-            }
-        }
-    }
-
-    // Si no hay ganador, retorna 0
     return 0;
 }
 
@@ -79,15 +42,26 @@ const std::vector<std::vector<int>>& Tablero::getGrid() const {
 }
 
 void Tablero::redimensionar(int nuevasFilas, int nuevasColumnas) {
-    std::vector<std::vector<int>> nuevoGrid(nuevasFilas, std::vector<int>(nuevasColumnas, 0));
+    grid.resize(nuevasFilas);
+    for (auto& fila : grid) {
+        fila.resize(nuevasColumnas, 0);
+    }
+}
 
-    for (int i = 0; i < std::min(filas, nuevasFilas); ++i) {
-        for (int j = 0; j < std::min(columnas, nuevasColumnas); ++j) {
-            nuevoGrid[i][j] = grid[i][j];
+bool Tablero::esValido(int fila, int columna) const {
+    return fila >= 0 && fila < grid.size() && columna >= 0 && columna < grid[0].size();
+}
+
+bool Tablero::verificarLinea(int fila, int columna, int deltaFila, int deltaColumna, int jugador) const {
+    int count = 0;
+    for (int i = -3; i <= 3; ++i) {
+        int newRow = fila + i * deltaFila;
+        int newCol = columna + i * deltaColumna;
+        if (esValido(newRow, newCol) && grid[newRow][newCol] == jugador) {
+            if (++count == 4) return true;
+        } else {
+            count = 0;
         }
     }
-
-    filas = nuevasFilas;
-    columnas = nuevasColumnas;
-    grid = nuevoGrid;
+    return false;
 }

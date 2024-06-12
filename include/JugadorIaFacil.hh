@@ -1,13 +1,19 @@
-#ifndef JUGADORIAFACIL_HH
-#define JUGADORIAFACIL_HH
+#ifndef JUGADOR_IAFACIL_HH
+#define JUGADOR_IAFACIL_HH
 
-#include "IJugador.hh"
+#include <IJugador.hh>
+#include <Tablero.hh>
+#include <vector>
 
 class JugadorIaFacil : public IJugador {
 public:
-    JugadorIaFacil(const std::string &nombre);
-    int realizarMovimiento() override;
+    JugadorIaFacil(const std::string& nombre);
+    int realizarMovimiento(Tablero& tableroActual) override;
+
+private:
+    std::vector<int> obtenerMovimientos(const Tablero& tablero) const;
 };
 
-#endif // JUGADORIAFACIL_HH
+#endif // JUGADOR_IAFACIL_HH
+
 

@@ -1,12 +1,9 @@
 #include <JugadorHumano.hh>
 
-#include <iostream>
+JugadorHumano::JugadorHumano(const std::string& nombre) : IJugador(nombre) {}
 
-JugadorHumano::JugadorHumano(const std::string &nombre) : IJugador(nombre) {}
-
-int JugadorHumano::realizarMovimiento() {
-  int columna;
-  std::cout << "Ingrese la columna donde desea colocar su ficha: ";
-  std::cin >> columna;
-  return columna;
+int JugadorHumano::realizarMovimiento(Tablero& tableroActual) {
+    // El movimiento se maneja por el evento de clic del ratón en el tablero.
+    return -1; // Este valor no se usa.
 }
+
