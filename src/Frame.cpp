@@ -1,4 +1,7 @@
 #include <Frame.hh>
+#include <JugadorHumano.hh>
+#include <JugadorIaFacil.hh>
+#include <JugadorIaDificil.hh>
 
 wxBEGIN_EVENT_TABLE(Frame, wxFrame)
     EVT_PAINT(Frame::OnPaint)
@@ -10,6 +13,13 @@ Frame::Frame(const wxString& title, int rows, int cols, const wxString& opponent
     : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(700, 600)),
       cellWidth(100), cellHeight(100), tablero(rows, cols), opponent(opponent) {
     SetBackgroundStyle(wxBG_STYLE_PAINT);
+    if (opponent == "IA Dificil") {
+        iaDificil = std::make_unique<JugadorIaDificil>("IA Dificil");
+    } else if (opponent == "IA Facil") {
+        iaFacil = std::make_unique<JugadorIaFacil>("IA Facil");
+    } else {
+        jugadorHumano = std::make_unique<JugadorHumano>("Humano 2");
+    }
 }
 
 void Frame::OnPaint(wxPaintEvent& event) {
@@ -22,7 +32,47 @@ void Frame::OnMouseClick(wxMouseEvent& event) {
     int x = event.GetX();
     int column = x / cellWidth;
     if (tablero.colocarFicha(column, 1)) {
+        int ganador = 0;
+        for (int fila = 0; fila < tablero.getGrid().size(); ++fila) {
+            ganador = tablero.verificarGanador(fila, column);
+            if (ganador != 0) break;
+        }
         Refresh();
+        if (ganador != 0) {
+            wxString msg = wxString::Format("Jugador %d ha ganado!", ganador);
+            wxMessageBox(msg, "Fin del Juego", wxOK | wxICON_INFORMATION, this);
+            return;
+        }
+
+        if (iaDificil) {
+            int columnaIA = iaDificil->realizarMovimiento(tablero);
+            if (tablero.colocarFicha(columnaIA, 2)) {
+                for (int fila = 0; fila < tablero.getGrid().size(); ++fila) {
+                    ganador = tablero.verificarGanador(fila, columnaIA);
+                    if (ganador != 0) break;
+                }
+                Refresh();
+                if (ganador != 0) {
+                    wxString msg = wxString::Format("Jugador %d ha ganado!", ganador);
+                    wxMessageBox(msg, "Fin del Juego", wxOK | wxICON_INFORMATION, this);
+                }
+            }
+        } else if (iaFacil) {
+            int columnaIA = iaFacil->realizarMovimiento(tablero);
+            if (tablero.colocarFicha(columnaIA, 2)) {
+                for (int fila = 0; fila < tablero.getGrid().size(); ++fila) {
+                    ganador = tablero.verificarGanador(fila, columnaIA);
+                    if (ganador != 0) break;
+                }
+                Refresh();
+                if (ganador != 0) {
+                    wxString msg = wxString::Format("Jugador %d ha ganado!", ganador);
+                    wxMessageBox(msg, "Fin del Juego", wxOK | wxICON_INFORMATION, this);
+                }
+            }
+        } else if (jugadorHumano) {
+            // Esperar a que el segundo jugador humano haga clic
+        }
     }
 }
 
